@@ -1,0 +1,54 @@
+/*
+-moz-box-shadow
+-webkit-box-shadow
+*/
+.rounded-corners {
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.screenshot {
+    float: left;
+}
+.link {
+    width: 150px;
+    float: right;
+}
+.description {
+    margin-top: 20px;
+    border-top: #778691 solid 2px;
+    width: 100%;
+    float: left;
+}
+#menu, #menu ul {
+    padding-left: 20px;
+}
+body {
+    font-family: "Arial";
+    background-color: #F5FCD0;
+}
+p {
+    font-family: "Arial";
+    color: #778691;
+}
+h1 {
+    font-family: "Arial";
+    color: #778691;/* #B1C2B3; */
+}
+h2 {
+    font-family: "Arial";
+    color: #778691;
+}
+table {
+    background-color: #F5FCD0;
+}
+.downloadsTable {
+    width: 100%;
+    border: lightblue 1px solid;
+}
