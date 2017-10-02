@@ -19,9 +19,8 @@ class Database {
 
     public function query($sql) {
         $con = $this->openDB();
-
         $result = $con->query($sql);
-        
+        $result->setFetchMode(PDO::FETCH_ASSOC);
         return $result;
     }
 

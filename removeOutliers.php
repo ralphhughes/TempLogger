@@ -1,8 +1,8 @@
 <?php
+require_once 'includes/config.php';
 require_once 'includes/database.php';
-const DATASOURCE="SQLITE"; // MYSQL or SQLITE
-// This file is standalone
-$con = openDB();
+require_once 'includes/util.php';
+
 
 if (isset($_POST['rowIds']))  {
 

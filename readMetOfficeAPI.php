@@ -1,4 +1,8 @@
 <?php
+require_once 'includes/config.php';
+require_once 'includes/database.php';
+require_once 'includes/util.php';
+
 // Run this every hour or every 3 hours?
 
 
