@@ -9,7 +9,7 @@ if (isset($_POST['rowIds']))  {
     $commaList = implode(', ', $_POST['rowIds'] );
     $sql = "DELETE FROM temps WHERE id in (" . $commaList . ")";
 	echo $sql . "<br/>";
-	$con->query($sql);
+	Database::query($sql);
 	echo "Got to end of script.";
     exit();
 }
@@ -30,7 +30,7 @@ include 'includes/guiHeader.php';
 		<form method="POST">
 			<table style="border-spacing: 10px;">
 				<tr><td>&nbsp;</td><td>ID</td><td>Timestamp</td><td>Value</td></tr>
-				<?= printSuspiciousRows($con, $sensor) ?>
+				<?= printSuspiciousRows($sensor) ?>
 			
 			</table>
 			<input type="submit" value="Delete selected rows">
@@ -97,5 +97,3 @@ function arrContainsId($array, $id) {
 	}
 	return false;
 }
-
-$con = null;

@@ -84,7 +84,7 @@ $(function () {
 
         series: [
 
-                <?=fetchAllSeries($con, $seriesIndexes, $seriesNames, $numDays, $selectedSamplingPeriod);?>
+                <?=fetchAllSeries($seriesIndexes, $seriesNames, $numDays, $selectedSamplingPeriod);?>
 
         ]
     });
@@ -92,7 +92,7 @@ $(function () {
 function validateForm() {
 	var numDays = document.getElementsByName('numDays')[0].value;
 	var samplingPeriod = document.getElementsByName('samplingPeriod')[0].value;
-	if (samplingPeriod == 0) {
+	if (samplingPeriod === 0) {
 		samplingPeriod = 1/6;
 	}
 	var roughEstNumResults = (numDays * 24) / samplingPeriod;
@@ -176,7 +176,7 @@ function getSensorNames($seriesNames, $seriesIndexes) {
     return $output;
 }
 
-function fetchAllSeries($con, $seriesIndexes, $seriesNames, $numDays, $selectedSamplingPeriod) {
+function fetchAllSeries($seriesIndexes, $seriesNames, $numDays, $selectedSamplingPeriod) {
     $output="";
     foreach($seriesIndexes as $i => $currentSeriesIndex) {
         $sensor = $seriesNames[$currentSeriesIndex];
@@ -233,5 +233,3 @@ function fetchAllSeries($con, $seriesIndexes, $seriesNames, $numDays, $selectedS
     }
     return $output;
 }
-
-$con = null;

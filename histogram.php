@@ -65,7 +65,7 @@ $(function () {
         series: [{
             name: '<?=$seriesNames[$seriesIndex];?>',
             data: [
-                <?=fetchHourlyData($con, $seriesNames[$seriesIndex], $numDays);?>
+                <?=fetchHourlyData($seriesNames[$seriesIndex], $numDays);?>
             ]
         }]
     });
@@ -115,7 +115,7 @@ function getSensorNames($seriesNames, $seriesIndex) {
     }
     return $output;
 }
-function fetchHourlyData($con, $sensor, $numDays) {
+function fetchHourlyData($sensor, $numDays) {
 
     $sql="select strftime('%H',timestamp) as hour, avg(value) as value from temps " .
             "where sensor='" . $sensor . "' " .
@@ -128,5 +128,3 @@ function fetchHourlyData($con, $sensor, $numDays) {
     }
     return $js;
 }
-
-$con = null;
