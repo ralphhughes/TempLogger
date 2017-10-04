@@ -12,10 +12,12 @@ Connect one of more DS18B20 sensors, or DHT22/AM2302 sensors to the GPIO pins on
 
 
 ###### Setup nginx
-[https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md](Follow this raspberry pi official doc)
+[Follow this raspberry pi official doc](https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md)
 
 `sudo nano /etc/nginx/sites-enabled/default`
+
 Add `index.php` after `index`
+
 Uncomment `location .php {` section
 
 ###### Install code
@@ -26,7 +28,7 @@ Uncomment `location .php {` section
 
 ###### Browse to the web interface
 
-Fire up your browser and point it at `http://ip-address-of-pi/SnugPi`
+Fire up your browser and point it at `http://ip-address-of-pi/TempLogger/`
 
 
 ## Upgrading

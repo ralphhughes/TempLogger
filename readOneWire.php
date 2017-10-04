@@ -11,7 +11,7 @@ $sensors = array(
 
 foreach($sensors as $sensorName => $sensorPath) {
 	$temp = readTempFromSensor($sensorPath);
-	Database::logValueToDB($sensorName, $temp);
+	$Database->logValueToDB($sensorName, $temp);
 }
 
 function readTempFromSensor($sensorPath) {

@@ -122,7 +122,7 @@ function fetchHourlyData($sensor, $numDays) {
 	    "and timestamp > datetime('now','-" . $numDays . " days') " . 
             "group by strftime('%H',timestamp);";
 
-    $result = Database::query($sql);
+    $result = $Database->query($sql);
     while($row = $result->fetch()){
         $js = $js . "[" . $row['hour'] . ", " . $row['value'] . "],\n";
     }

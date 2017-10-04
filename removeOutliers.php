@@ -9,7 +9,7 @@ if (isset($_POST['rowIds']))  {
     $commaList = implode(', ', $_POST['rowIds'] );
     $sql = "DELETE FROM temps WHERE id in (" . $commaList . ")";
 	echo $sql . "<br/>";
-	Database::query($sql);
+	$Database->query($sql);
 	echo "Got to end of script.";
     exit();
 }
@@ -52,7 +52,7 @@ MetOfficeForecast
 function printSuspiciousRows($sensor) {
 	$output="";
 	$sql="select * from temps where sensor='" . $sensor . "' order by timestamp";
-	$result = Database::query($sql);
+	$result = $Database->query($sql);
 	//$lastValue
 	// id, sensor, timestamp, value
 	$arrSuspiciousValues = array();

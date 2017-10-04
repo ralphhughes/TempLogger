@@ -40,3 +40,5 @@ class Database {
         }
     }
 }
+
+$Database = new Database();

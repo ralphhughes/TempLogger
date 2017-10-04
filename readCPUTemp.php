@@ -9,5 +9,5 @@ $temperature = $cputemp / 1000;
 
 echo "CPU Temp: " . $temperature;
 
-Database::logValueToDB('CPU', $temperature);
+$Database->logValueToDB('CPU', $temperature);
 

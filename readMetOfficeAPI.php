@@ -41,4 +41,4 @@ var_dump($forecasts);
 //$temp = $data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['T'];
 print 'Temperature: ' . $forecasts['Rep']['T'];
 
-Database::logValueToDB('MetOfficeForecast', $forecasts['Rep']['T']);
+$Database->logValueToDB('MetOfficeForecast', $forecasts['Rep']['T']);

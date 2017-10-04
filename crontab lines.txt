@@ -1,17 +1,17 @@
 # Every 10 min read the CPU temp and store it in SQLite
-*/10 * * * * php /var/www/readCPUTemp.php
+*/10 * * * * php /var/www/TempLogger/readCPUTemp.php
 
 ##########
 
 # Every 10 min read the DHT22\AM2302 temperature & humidity sensor and store it in SQLite
-*/10 * * * * php /var/www/readDHT22.php
+*/10 * * * * php /var/www/TempLogger/readDHT22.php
 
 ##########
 
 # Every 10 min read the temperature sensor and store it in SQLite
-*/10 * * * * php /var/www/readOneWire.php
+*/10 * * * * php /var/www/TempLogger/readOneWire.php
 
 #########
 
 # Every hour read the metoffice forecast and store it in SQLite
-0 * * * * php /var/www/readMetOfficeAPI.php
+0 * * * * php /var/www/TempLogger/readMetOfficeAPI.php

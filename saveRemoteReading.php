@@ -10,4 +10,4 @@ $value = filter_input(INPUT_POST, 'value', FILTER_SANITIZE_NUMBER_FLOAT);
 //echo "Reading: " . $value;
 
 // This method uses prepared statements anyway
-Database:logValueToDB($name, $value);
+$Database->logValueToDB($name, $value);

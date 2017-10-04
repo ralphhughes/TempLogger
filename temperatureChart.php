@@ -213,7 +213,7 @@ function fetchAllSeries($seriesIndexes, $seriesNames, $numDays, $selectedSamplin
 	    break;
         }
 
-        $result = Database::query($sql);
+        $result = $Database->query($sql);
         $js = "";
         while($row = $result->fetch()){
             $js = $js . "\t\t\t[Date.UTC(" . $row['year'] . "," . ($row['month'] - 1) . "," . $row['day'] . "," .

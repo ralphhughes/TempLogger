@@ -14,8 +14,8 @@ echo "Humidity: " . $humidity . "\n";
 
 //insert the data
 if ($temperature != '-999') {
-    Database::logValueToDB('DHT22_Temp', $temperature);
+    $Database->logValueToDB('DHT22_Temp', $temperature);
 }
 if ($humidity != '-999') {
-    Database::logValueToDB('DHT22_Humidity', $humidity);
+    $Database->logValueToDB('DHT22_Humidity', $humidity);
 }
