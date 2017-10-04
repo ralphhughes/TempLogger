@@ -41,22 +41,4 @@ var_dump($forecasts);
 //$temp = $data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['T'];
 print 'Temperature: ' . $forecasts['Rep']['T'];
 
-try {
-    //open the database
-    $db = new PDO('sqlite:/var/www/database/myDB.sqlite');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    //create the database
-    $db->exec("CREATE TABLE IF NOT EXISTS temps (id INTEGER PRIMARY KEY, timestamp TEXT, sensor TEXT, value REAL)");
-
-// create index time_idx on temps(timestamp);
-// create index sensor_idx on temps(sensor);
-
-    //insert some data...
-    $db->exec("INSERT INTO temps (timestamp, sensor, value) VALUES (datetime(), 'MetOfficeForecast', " . $forecasts['Rep']['T'] . ");");
-
-    // close the database connection
-    $db = NULL;
-} catch (PDOException $e) {
-    print 'Exception : ' . $e->getMessage();
-}
+Database::logValueToDB('MetOfficeForecast', $forecasts['Rep']['T']);

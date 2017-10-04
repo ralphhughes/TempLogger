@@ -1,3 +1,3 @@
 <?php
-define('DB_PATH', 'sqlite:/var/www/database/myDB.sqlite');
+define('DB_PATH', 'sqlite:' . __DIR__ . '/database/myDB.sqlite');
 define('LOGGER_ID', null);      // Used when moving Pi's around

@@ -9,7 +9,7 @@ class Database {
     // Only this class should need to open the actual connection
     private function openDB() {
         try {
-            $con = new PDO('sqlite:/var/www/database/myDB.sqlite');
+            $con = new PDO(DB_PATH);
             $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die("Error " . $e->getMessage());
