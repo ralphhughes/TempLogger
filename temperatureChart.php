@@ -213,8 +213,7 @@ function fetchAllSeries($con, $seriesIndexes, $seriesNames, $numDays, $selectedS
 	    break;
         }
 
-        $result = $con->query($sql);
-        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $result = Database::query($sql);
         $js = "";
         while($row = $result->fetch()){
             $js = $js . "\t\t\t[Date.UTC(" . $row['year'] . "," . ($row['month'] - 1) . "," . $row['day'] . "," .

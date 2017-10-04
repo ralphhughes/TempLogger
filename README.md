@@ -27,3 +27,10 @@ Uncomment `location .php {` section
 ###### Browse to the web interface
 
 Fire up your browser and point it at `http://ip-address-of-pi/SnugPi`
+
+
+## Upgrading
+
+`cd /var/www/TempLogger`
+
+`git pull`

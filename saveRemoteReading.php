@@ -1,26 +1,13 @@
 <?php
+require_once 'includes/config.php';
+require_once 'includes/database.php';
+require_once 'includes/util.php';
 
-// Read post request for sensor name and sensor value
-
-// TODO: Stop SQL injection!
-$name = $_POST["name"];
-$value = $_POST["value"];
+// Read post request for sensor name and sensor value, filter should help against SQL injection
+$name = filter_input(INPUT_POST, 'name',FILTER_SANITIZE_STRING);
+$value = filter_input(INPUT_POST, 'value', FILTER_SANITIZE_NUMBER_FLOAT);
 
 //echo "Reading: " . $value;
 
-try {
-    //open the database
-    $db = new PDO('sqlite:/var/www/database/myDB.sqlite');
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    //create the database
-    $db->exec("CREATE TABLE IF NOT EXISTS temps (id INTEGER PRIMARY KEY, timestamp TEXT, sensor TEXT, value REAL)");
-
-    //insert some data...
-    $db->exec("INSERT INTO temps (timestamp, sensor, value) VALUES (datetime(), '" . $name . "', " . $value . ");");
-
-    // close the database connection
-    $db = NULL;
-} catch (PDOException $e) {
-    print 'Exception : ' . $e->getMessage();
-}
+// This method uses prepared statements anyway
+Database:logValueToDB($name, $value);

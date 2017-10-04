@@ -49,11 +49,10 @@ DHT22_Humidity
 MetOfficeForecast
 */ 
 
-function printSuspiciousRows($con, $sensor) {
+function printSuspiciousRows($sensor) {
 	$output="";
 	$sql="select * from temps where sensor='" . $sensor . "' order by timestamp";
-	$result = $con->query($sql);
-	$result->setFetchMode(PDO::FETCH_ASSOC);
+	$result = Database::query($sql);
 	//$lastValue
 	// id, sensor, timestamp, value
 	$arrSuspiciousValues = array();

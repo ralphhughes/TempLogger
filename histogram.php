@@ -122,8 +122,7 @@ function fetchHourlyData($con, $sensor, $numDays) {
 	    "and timestamp > datetime('now','-" . $numDays . " days') " . 
             "group by strftime('%H',timestamp);";
 
-    $result = $con->query($sql);
-    $result->setFetchMode(PDO::FETCH_ASSOC);
+    $result = Database::query($sql);
     while($row = $result->fetch()){
         $js = $js . "[" . $row['hour'] . ", " . $row['value'] . "],\n";
     }
