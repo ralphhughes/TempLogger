@@ -40,5 +40,5 @@ class Database {
         }
     }
 }
-
+global $Database;
 $Database = new Database();
