@@ -84,7 +84,7 @@ $(function () {
 
         series: [
 
-                <?=fetchAllSeries($seriesIndexes, $seriesNames, $numDays, $selectedSamplingPeriod);?>
+                <?=fetchAllSeries($Database, $seriesIndexes, $seriesNames, $numDays, $selectedSamplingPeriod);?>
 
         ]
     });
@@ -176,7 +176,7 @@ function getSensorNames($seriesNames, $seriesIndexes) {
     return $output;
 }
 
-function fetchAllSeries($seriesIndexes, $seriesNames, $numDays, $selectedSamplingPeriod) {
+function fetchAllSeries($Database, $seriesIndexes, $seriesNames, $numDays, $selectedSamplingPeriod) {
     $output="";
     foreach($seriesIndexes as $i => $currentSeriesIndex) {
         $sensor = $seriesNames[$currentSeriesIndex];
