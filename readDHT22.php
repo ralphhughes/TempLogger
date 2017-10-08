@@ -3,8 +3,9 @@ require_once 'includes/config.php';
 require_once 'includes/database.php';
 require_once 'includes/util.php';
 
-//$strVal = (exec("sudo /home/pi/Adafruit_Python_DHT/examples/AdafruitDHT.py 2302 2")); // Requires the adafruit DHT library downloading and installing
-$strVal = exec("python " . basename(__DIR__) . "/DHT22.py"); // Requires pigpiod to be installed and running
+// Requires pigpiod to be installed and running
+$strVal = exec("python ./DHT22.py " . DHT22_PIN); // Pass the gpio pin from config 
+
 $temperature = get_string_between($strVal, "Temp=","*");
 $humidity = get_string_between($strVal, "Humidity=","%");
 

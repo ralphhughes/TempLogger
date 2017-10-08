@@ -4,6 +4,7 @@
 
 import time
 import atexit
+import sys
 
 import pigpio
 
@@ -254,7 +255,7 @@ if __name__ == "__main__":
 
    pi = pigpio.pi()
 
-   s = DHT22.sensor(pi, 2)
+   s = DHT22.sensor(pi, int(sys.argv[1]) ) # Pass the gpio pin from command line
 
    next_reading = time.time()
 
