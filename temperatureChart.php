@@ -92,7 +92,7 @@ $(function () {
 function validateForm() {
 	var numDays = document.getElementsByName('numDays')[0].value;
 	var samplingPeriod = document.getElementsByName('samplingPeriod')[0].value;
-	if (samplingPeriod === 0) {
+	if (parseInt(samplingPeriod, 10) === 0) {
 		samplingPeriod = 1/6;
 	}
 	var roughEstNumResults = (numDays * 24) / samplingPeriod;
