@@ -70,8 +70,8 @@ $(function () {
         ],
         tooltip: {
             shared: false,
+            valueSuffix: '°C',
             headerFormat: '<b>{point.x:%Y-%m-%d %H:%M}</b><br>',
-            pointFormat: '{series.name} - {point.y:.2f}<br>'
         },
 
         plotOptions: {
