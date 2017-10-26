@@ -29,14 +29,16 @@ class Database {
     }
 
     public function logValueToDB($sensorName, $value) {
-        try {
-            $con = $this->openDB();
-            $stmt = $con->prepare("INSERT INTO temps (timestamp, sensor, value) VALUES (datetime(), :sensorName, :value);");
-            $stmt->bindParam(':sensorName', $sensorName);
-            $stmt->bindParam(':value', $value);
-            $stmt->execute();
-        } catch(PDOException $e) {
-            echo "Error: " . $e->getMessage();
+        if (!is_null($value)) {
+            try {
+                $con = $this->openDB();
+                $stmt = $con->prepare("INSERT INTO temps (timestamp, sensor, value) VALUES (datetime(), :sensorName, :value);");
+                $stmt->bindParam(':sensorName', $sensorName);
+                $stmt->bindParam(':value', $value);
+                $stmt->execute();
+            } catch(PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
         }
     }
 }
