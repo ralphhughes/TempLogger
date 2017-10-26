@@ -15,21 +15,21 @@ foreach($sensors as $sensorName => $sensorPath) {
 }
 
 function readTempFromSensor($sensorPath) {
+    try {
+        // Open resource file for thermometer
+        $thermometer = fopen($sensorPath, "r");
 
-	// Open resource file for thermometer
-	$thermometer = fopen($sensorPath, "r");
+        // Get the contents of the resource
+        $thermometerReadings = fread($thermometer, filesize($sensorPath));
 
-	// Get the contents of the resource
-	$thermometerReadings = fread($thermometer, filesize($sensorPath));
-
-	// Close resource file for thermometer
-	fclose($thermometer);
+        // Close resource file for thermometer
+        fclose($thermometer);
 
         echo $thermometerReadings . "\n";
-        
-        // Check for a valid CRC
-        if (strpos($thermometerReadings[0],'YES') !== false) {
 
+        // Check for a valid CRC
+        //if (strpos($thermometerReadings[0], 'YES') !== false) {
+        if (preg_match('/YES/', $thermometerReadings[0])) {
             // We're only interested in the 2nd line, and the value after the t= on the 2nd line
             preg_match("/t=(.+)/", preg_split("/\n/", $thermometerReadings)[1], $matches);
             $temperature = $matches[1] / 1000;
@@ -44,5 +44,8 @@ function readTempFromSensor($sensorPath) {
             print "Invalid CRC.\n";
             return null;
         }
+    } catch (Exception $e) {
+        echo "Could not read: " . $sensorPath . "\n";
+        return null;
+    }
 }
-
