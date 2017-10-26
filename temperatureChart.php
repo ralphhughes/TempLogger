@@ -45,8 +45,8 @@ include 'includes/guiHeader.php';
             ],
             tooltip: {
                 shared: false,
-                valueSuffix: '°C',
                 headerFormat: '<b>{point.x:%Y-%m-%d %H:%M}</b><br>',
+                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y:.1f}°C</b><br/>',
             },
 
             plotOptions: {
