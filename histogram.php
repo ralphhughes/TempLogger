@@ -81,11 +81,11 @@ $(function () {
         <form action="" method="post" name="theForm">
             <select name="numDays" onchange="this.form.submit();">
                 <option selected="selected" value="">Select time period to view...</option>
-                <?=getTimePeriods($timePeriods, $numDays);?>
+                <?=getTimePeriodOptionHTML($timePeriods, $numDays);?>
             </select>
 	    <select name="seriesIndex" onchange="this.form.submit();">
                 <option value="">Select sensor to view...</option>
-		<?=getSensorNames($seriesNames, $seriesIndex);?>
+		<?=getSensorOptionHTML($seriesNames, $seriesIndex);?>
             </select>
         </form>
     </body>
@@ -93,7 +93,7 @@ $(function () {
 
 
 <?php
-function getTimePeriods($timePeriods, $numDays) {
+function getTimePeriodOptionHTML($timePeriods, $numDays) {
     $output="";
     foreach($timePeriods as $key => $value) {
 	if ($key === $numDays) {
@@ -104,7 +104,7 @@ function getTimePeriods($timePeriods, $numDays) {
     }
     return $output;
 }
-function getSensorNames($seriesNames, $seriesIndex) {
+function getSensorOptionHTML($seriesNames, $seriesIndex) {
     $output = "";
     for($i = 0; $i < count($seriesNames); $i++) {
         if ($i === $seriesIndex) {
