@@ -28,8 +28,7 @@ function readTempFromSensor($sensorPath) {
         echo $thermometerReadings . "\n";
 
         // Check for a valid CRC
-        //if (strpos($thermometerReadings[0], 'YES') !== false) {
-        if (preg_match('/YES/', $thermometerReadings[0])) {
+        if (preg_match('/YES/', $thermometerReadings)) {
             // We're only interested in the 2nd line, and the value after the t= on the 2nd line
             preg_match("/t=(.+)/", preg_split("/\n/", $thermometerReadings)[1], $matches);
             $temperature = $matches[1] / 1000;
