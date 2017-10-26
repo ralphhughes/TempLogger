@@ -25,6 +25,8 @@ function readTempFromSensor($sensorPath) {
 	// Close resource file for thermometer
 	fclose($thermometer);
 
+        echo $thermometerReadings . "\n";
+        
         // Check for a valid CRC
         if (strpos($thermometerReadings[0],'YES') !== false) {
 
@@ -39,7 +41,7 @@ function readTempFromSensor($sensorPath) {
 
             return $temperature;
         } else {
-            print "Invalid CRC.";
+            print "Invalid CRC.\n";
             return null;
         }
 }
