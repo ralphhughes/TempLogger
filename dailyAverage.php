@@ -30,6 +30,8 @@ include 'includes/guiHeader.php';
             },
             xAxis: {
                 type: 'datetime',
+                min: Date.UTC(0,0,0,0,0),
+                max: Date.UTC(0,0,0,24,0),
                 title: {
                     text: 'Date'
                 }
@@ -42,7 +44,7 @@ include 'includes/guiHeader.php';
             ],
             tooltip: {
                 shared: false,
-                headerFormat: '<b>{point.x:%Y-%m-%d %H:%M}</b><br>',
+                headerFormat: '<b>{point.x:%H:%M}</b><br>',
                 pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y:.1f}°C</b><br/>',
             },
 
