@@ -225,7 +225,7 @@ function getNumDays() {
     if (!empty($_GET["numDays"])) {
         $numDays = filter_input(INPUT_GET, 'numDays', FILTER_SANITIZE_NUMBER_INT);
     } else {
-        $numDays = 3; // Default time period on first entering the page
+        $numDays = 2; // Default time period on first entering the page
     }
     return $numDays;
 }
