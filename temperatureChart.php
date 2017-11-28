@@ -7,7 +7,7 @@ $numDays = getNumDays();
 $seriesIndexes = getSelectedSeries();
 $selectedSamplingPeriod = getSelectedSamplingPeriod();
 $seriesNames = getSeriesFromDB($Database);
-$timePeriods = array("1" => "1 Day", "3" => "3 Days", "7" => "1 Week", "14" => "2 Weeks", "30" => "1 Month", "42" => "6 Weeks", "91" => "3 Months", "183" => "6 Months", "274" => "9 Months", "365" => "1 Year", "548" => "18 Months", "731" => "2 Years");
+$timePeriods = array("1" => "1 Day", "2" => "2 Days", "4" => "4 Days", "7" => "1 Week", "14" => "2 Weeks", "30" => "1 Month", "42" => "6 Weeks", "91" => "3 Months", "183" => "6 Months", "274" => "9 Months", "365" => "1 Year", "548" => "18 Months", "731" => "2 Years");
 $samplingPeriods = array("0" => "All readings", "1" => "Hourly", "6" => "6 hours", "24" => "Daily");
 
 
@@ -121,7 +121,7 @@ include 'includes/guiHeader.php';
 function getSamplingPeriods($samplingPeriods, $selectedSamplingPeriod) {
     $output = "";
     foreach ($samplingPeriods as $key => $value) {
-        if ($key === $selectedSamplingPeriod) {
+        if ($key == $selectedSamplingPeriod) {
             $output = $output . "\t\t\t\t" . '<option selected value="' . $key . '">' . $value . "</option>\r\n";
         } else {
             $output = $output . "\t\t\t\t" . '<option value="' . $key . '">' . $value . "</option>\r\n";
