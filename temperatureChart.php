@@ -14,8 +14,8 @@ $samplingPeriods = array("0" => "All readings", "1" => "Hourly", "6" => "6 hours
 include 'includes/guiHeader.php';
 ?>
 
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
-<script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
+<script src="//code.highcharts.com/modules/exporting.js"></script>
+<script src="//highcharts.github.io/export-csv/export-csv.js"></script>
 <title>Temperature chart - <?=gethostname();?></title>
 
 <script>
