@@ -13,7 +13,7 @@ include 'includes/guiHeader.php';
 
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 <script src="http://highcharts.github.io/export-csv/export-csv.js"></script>
-<title>Temperature chart - <?= gethostname(); ?></title>
+<title>Daily averages chart - <?= gethostname(); ?></title>
 
 <script>
     $(function () {
@@ -30,8 +30,8 @@ include 'includes/guiHeader.php';
             },
             xAxis: {
                 type: 'datetime',
-                min: Date.UTC(0,0,0,0,0),
-                max: Date.UTC(0,0,0,24,0),
+                min: Date.UTC(0, 0, 0, 0, 0),
+                max: Date.UTC(0, 0, 0, 24, 0),
                 title: {
                     text: 'Date'
                 }
@@ -72,15 +72,16 @@ include 'includes/guiHeader.php';
 
     <div id="container" style="width: 100%; height: 80%;"></div>
     <form action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="get" onsubmit="return validateForm()" name="theForm">
-<select name="numDays">
-                    <?= getTimePeriodOptionHTML($timePeriods, $numDays); ?>
-                </select>
-    
-    Select sensor(s):<br/>
-                <select name="seriesIndexes[]" multiple>
-                    <?= getSensorOptionHTML($seriesNames, $seriesIndexes); ?>
-                </select>
-    <input type="submit" value="Go"/>
+        <select name="numDays">
+            <?= getTimePeriodOptionHTML($timePeriods, $numDays); ?>
+        </select>
+
+        Select sensor(s):<br/>
+        <select name="seriesIndexes[]" multiple>
+            <?= getSensorOptionHTML($seriesNames, $seriesIndexes); ?>
+        </select>
+        <input type="submit" value="Go"/>
+    </form>
 </body>
 </html>
 
@@ -127,6 +128,7 @@ function getTimePeriodOptionHTML($timePeriods, $numDays) {
     }
     return $output;
 }
+
 function getSensorOptionHTML($seriesNames, $seriesIndexes) {
     $output = "";
     for ($i = 0; $i < count($seriesNames); $i++) {
@@ -147,8 +149,6 @@ function getSeriesFromDB($Database) {
     return $array;
 }
 
-
-
 function fetchAllSeries($Database, $seriesIndexes, $seriesNames, $numDays) {
     $output = "";
     foreach ($seriesIndexes as $i => $currentSeriesIndex) {
@@ -156,14 +156,14 @@ function fetchAllSeries($Database, $seriesIndexes, $seriesNames, $numDays) {
         $output = $output . "{\r\n\t\tname: '" . $sensor . "',\r\n\t\tdata: [\r\n";
         // Sensible values 10 min, 1 hour, 6 hours, 1 day, 1 week (increases by approx factor of 6 each time)
         // Resolution determined by amount of data
-        $sql = "SELECT ".
-                    "strftime('%H', TIMESTAMP, 'localtime') AS hour,".
-                    "strftime('%M', timestamp, 'localtime') as minute, ".
-                    "avg(value) as value ".
-            "from temps ".
-            "where sensor='" . $sensor . "' ".
-            "        and timestamp > datetime('now','-" . $numDays . " days') ".
-            "group by strftime('%H', timestamp, 'localtime'), strftime('%M', timestamp, 'localtime');";
+        $sql = "SELECT " .
+                "strftime('%H', TIMESTAMP, 'localtime') AS hour," .
+                "strftime('%M', timestamp, 'localtime') as minute, " .
+                "avg(value) as value " .
+                "from temps " .
+                "where sensor='" . $sensor . "' " .
+                "        and timestamp > datetime('now','-" . $numDays . " days') " .
+                "group by strftime('%H', timestamp, 'localtime'), strftime('%M', timestamp, 'localtime');";
 
         $result = $Database->query($sql);
         $js = "";
