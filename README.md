@@ -8,8 +8,9 @@ Connect one of more DS18B20 sensors, or DHT22/AM2302 sensors to the GPIO pins on
 ## Installation instructions
 
 ###### Install dependencies
-`sudo apt-get install git nginx php5-fpm sqlite3 php5-sqlite`
+`sudo apt-get install git nginx php5-fpm sqlite3 php5-sqlite pigpio python-pigpio`
 
+`sudo pigpiod`
 
 ###### Setup nginx
 [Follow this raspberry pi official doc](https://www.raspberrypi.org/documentation/remote-access/web-server/nginx.md)
@@ -25,6 +26,17 @@ Uncomment `location .php {` section
 
 `git clone https://github.com/ralphhughes/TempLogger.git`
 
+
+###### Test you can read values from sensors
+
+`php readDHT22.php`
+`php readOneWire.php`
+
+###### Configure cron
+
+`crontab -e`
+
+Copy in the required commands from the `crontab lines.txt` file in this folder
 
 ###### Browse to the web interface
 
