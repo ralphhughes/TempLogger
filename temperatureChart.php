@@ -41,6 +41,12 @@ include 'includes/guiHeader.php';
                     title: {
                         text: 'Temperature (\xB0C)'
                     }
+                },
+                {
+                    opposite: true,
+                    title: {
+                        text: 'Humidity (%)'
+                    }
                 }
             ],
             tooltip: {
@@ -207,14 +213,10 @@ function fetchAllSeries($Database, $seriesIndexes, $seriesNames, $numDays, $sele
         }
         $output = $output . $js;
         $output = $output . "\t\t],\r\n";
-
-        $zones = "\t\tzones: [\n\t\t\t{value: 0, color: '#f7a35c'},\n";
-        $zones = $zones . "\t\t\t{value: 10,color: '#7cb5ec'},\n";
-        $zones = $zones . "\t\t\t{color: '#90ed7d'}\n";
-        $zones = $zones . "\t\t],\n";
-        if ($sensor == 'DHT22_Temp_disabled') {
-            $output = $output . $zones;
+        if ($sensor == 'DHT22_Humidity') {
+            $output = $output . "\t\tyAxis: 1\r\n";
         }
+        
         $output = $output . "},\r\n\r\n";
     }
     return $output;
