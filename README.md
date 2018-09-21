@@ -7,8 +7,11 @@ Connect one of more DS18B20 sensors, or DHT22/AM2302 sensors to the GPIO pins on
 
 ## Installation instructions
 
-###### Install dependencies
+###### Install dependencies (Raspbian Jessie)
 `sudo apt-get install git nginx php5-fpm sqlite3 php5-sqlite pigpio python-pigpio`
+
+###### Install dependencies (Raspbian Stretch)
+`sudo apt-get install git nginx php-fpm sqlite3 php-sqlite3 pigpio python-pigpio`
 
 `sudo pigpiod`
 
