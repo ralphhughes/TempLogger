@@ -119,6 +119,8 @@ include 'includes/guiHeader.php';
                 4) <input type="submit" value="Go"/>
             </td>
     </table>
+    <a href="<?php echo str_replace('temperatureChart.php','dailyAverage.php',$_SERVER['REQUEST_URI']); ?>">Daily Averages</a><br/>
+    Server Time: <?php echo date("Y-m-d H:i:s") ?>
 </form>
 </body>
 </html>

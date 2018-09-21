@@ -82,6 +82,7 @@ include 'includes/guiHeader.php';
         </select>
         <input type="submit" value="Go"/>
     </form>
+    <a href="<?php echo str_replace('dailyAverage.php', 'temperatureChart.php', $_SERVER['REQUEST_URI']); ?>">Back to chart</a>
 </body>
 </html>
 
