@@ -1,6 +1,7 @@
 # TempLogger
 Temperature &amp; humidity logger for Raspberry Pi (SQLite backend, javascript charting front end)
 
+![Example screenshot](screenshot1.png)
 
 ## Hardware setup
 Connect one of more DS18B20 sensors, or DHT22/AM2302 sensors to the GPIO pins on the pi. Make a note of the pins you connected them to.
