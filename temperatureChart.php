@@ -52,7 +52,15 @@ include 'includes/guiHeader.php';
             tooltip: {
                 shared: false,
                 headerFormat: '<b>{point.x:%Y-%m-%d %H:%M}</b><br>',
-                pointFormat: '<span style="color:{point.color}">\u25CF</span> {series.name}: <b>{point.y:.1f}°C</b><br/>',
+                pointFormatter: function() {
+                    var unit;
+                    if (this.series.name.includes("umidity")) {
+                        unit = '%';
+                    } else {
+                        unit = '°C';
+                    }
+                    return '<span style="color:' + this.color + '">' + this.series.name + ': ' + this.y + unit;
+                }
             },
 
             plotOptions: {
