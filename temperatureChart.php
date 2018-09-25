@@ -59,7 +59,9 @@ include 'includes/guiHeader.php';
                     } else {
                         unit = '°C';
                     }
-                    return '<span style="color:' + this.color + '">' + this.series.name + ': ' + this.y + unit;
+                    // Round to 1 dp but only if needed
+                    var rounded = Math.round(this.y * 10) / 10;
+                    return '<span style="color:' + this.color + '">' + this.series.name + ': ' + rounded + unit;
                 }
             },
 
@@ -127,7 +129,7 @@ include 'includes/guiHeader.php';
                 4) <input type="submit" value="Go"/>
             </td>
     </table>
-    <a href="<?php echo str_replace('temperatureChart.php','dailyAverage.php',$_SERVER['REQUEST_URI']); ?>">Daily Averages</a><br/>
+    <a href="<?php echo 'dailyAverage.php?' + $_SERVER['QUERY_STRING'] ?>">Daily Averages</a><br/>
     Server Time: <?php echo date("Y-m-d H:i:s") ?>
 </form>
 </body>
