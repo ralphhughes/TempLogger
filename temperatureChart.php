@@ -224,6 +224,7 @@ function fetchAllSeries($Database, $seriesIndexes, $seriesNames, $numDays, $sele
         $output = $output . $js;
         $output = $output . "\t\t],\r\n";
         if ($sensor == 'DHT22_Humidity') {
+            $output = $output . "\t\tdashStyle: 'longdash',\r\n";
             $output = $output . "\t\tyAxis: 1\r\n";
         }
         
