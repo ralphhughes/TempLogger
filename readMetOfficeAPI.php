@@ -41,5 +41,6 @@ var_dump($forecasts);
 //print 'Time: ' . $offset / 60 . ':00 ';
 //$temp = $data['SiteRep']['DV']['Location']['Period'][0]['Rep'][0]['T'];
 print 'Temperature: ' . $forecasts['Rep']['T'];
-
+print 'Humidity: ' . $forecasts['Rep']['H'];
 $Database->logValueToDB('MetOfficeForecast', $forecasts['Rep']['T']);
+$Database->logValueToDB('MetOfficeHumidity', $forecasts['Rep']['H']);

@@ -225,7 +225,7 @@ function fetchAllSeries($Database, $seriesIndexes, $seriesNames, $numDays, $sele
         }
         $output = $output . $js;
         $output = $output . "\t\t],\r\n";
-        if ($sensor == 'DHT22_Humidity') {
+        if (endsWith($sensor, 'umidity')) {
             $output = $output . "\t\tdashStyle: 'longdash',\r\n";
             $output = $output . "\t\tyAxis: 1\r\n";
         }
@@ -273,3 +273,4 @@ function getSelectedSamplingPeriod() {
     }
     return $selectedSamplingPeriod;
 }
+
