@@ -14,10 +14,22 @@ $humidity = get_string_between($strVal, "Humidity=","%");
 echo "Temp: " . $temperature . "\n";
 echo "Humidity: " . $humidity . "\n";
 
+ $headers = array(
+    'Content-type: application/json',
+    'x-ha-access: chess386',
+  );
+
 //insert the data
-if ($temperature != '-999') {
-    $Database->logValueToDB('DHT22_Temp', $temperature);
+if ($temperature != '-999' && $humidity != '-999') {
+  $Database->logValueToDB('DHT22_Temp', $temperature);
+  $Database->logValueToDB('DHT22_Humidity', $humidity);
+  writeToFile($temperature, $humidity);
 }
-if ($humidity != '-999') {
-    $Database->logValueToDB('DHT22_Humidity', $humidity);
+
+function writeToFile($temperature, $humidity) {
+
+  $fp = fopen("./dht22", "w");
+  fwrite($fp, '{  "temperature": ' . $temperature . ', "humidity": ' . $humidity . '}');
+  fclose($fp);
+
 }
