@@ -129,7 +129,7 @@ include 'includes/guiHeader.php';
                 4) <input type="submit" value="Go"/>
             </td>
     </table>
-    <a href="<?php echo 'dailyAverage.php?' + $_SERVER['QUERY_STRING'] ?>">Daily Averages</a><br/>
+    <a href="dailyAverage.php">Daily Averages</a><br/>
     Server Time: <?php echo date("Y-m-d H:i:s") ?>
 </form>
 </body>
@@ -260,7 +260,7 @@ function getSelectedSeries() {
             }
         }
     } else {
-        $seriesIndexes = array("0", "1");
+        $seriesIndexes = array("1", "3");
     }
     return $seriesIndexes;
 }
